@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TurfNova | Book Turf</title>
+
+    <!-- Main website styles -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Admin/booking shared styles -->
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           TURFNOVA BOOKING PAGE — FINAL UI
+        ===================================================== */
+
+        .tn-booking-page {
+            min-height: 100vh;
+
+            padding:
+                0 20px 80px;
+
+            background:
+                radial-gradient(
+                    circle at 10% 5%,
+                    rgba(67, 170, 235, 0.12),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 45%,
+                    rgba(65, 190, 145, 0.08),
+                    transparent 30%
+                ),
+                #07111c;
+
+            color: #eef7ff;
+        }
+
+
+        .tn-booking-wrap {
+            width: min(1040px, 100%);
+
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .tn-booking-nav {
+            height: 74px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            margin:
+                0 -20px;
+
+            background:
+                rgba(5, 15, 26, 0.96);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,0.20);
+        }
+
+
+        .tn-booking-logo {
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 25px;
+
+            font-weight: 900;
+
+            letter-spacing: -1px;
+        }
+
+
+        .tn-booking-back {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                9px 13px;
+
+            border-radius: 10px;
+
+            color:
+                #9eb2c4;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 750;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            transition:
+                .2s ease;
+        }
+
+
+        .tn-booking-back:hover {
+            color:
+                #70caff;
+
+            border-color:
+                rgba(85,184,255,0.25);
+
+            background:
+                rgba(85,184,255,0.06);
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .tn-booking-header {
+            padding:
+                54px 0 30px;
+        }
+
+
+        .tn-booking-eyebrow {
+            display: inline-flex;
+
+            padding:
+                7px 11px;
+
+            margin-bottom: 13px;
+
+            border-radius: 999px;
+
+            color:
+                #67c8ff;
+
+            background:
+                rgba(85,184,255,0.08);
+
+            border:
+                1px solid
+                rgba(85,184,255,0.15);
+
+            font-size: 9px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+        }
+
+
+        .tn-booking-header h1 {
+            margin: 0 0 10px;
+
+            font-size:
+                clamp(34px, 6vw, 52px);
+
+            line-height: 1;
+
+            letter-spacing:
+                -2px;
+        }
+
+
+        .tn-booking-header p {
+            margin: 0;
+
+            max-width: 620px;
+
+            color:
+                #8093a5;
+
+            font-size: 12px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           MAIN STACK
+        ===================================================== */
+
+        .tn-booking-stack {
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                17px;
+        }
+
+
+        /* =====================================================
+           SELECTED TURF
+        ===================================================== */
+
+        .tn-selected-card {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 27px;
+
+            border-radius: 23px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(30,70,98,0.96),
+                    rgba(11,25,39,0.99)
+                );
+
+            border:
+                1px solid
+                rgba(91,188,245,0.20);
+
+            box-shadow:
+                0 22px 60px
+                rgba(0,0,0,0.27);
+        }
+
+
+        .tn-selected-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            right: -90px;
+            top: -110px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(79,190,255,0.13);
+
+            filter:
+                blur(45px);
+        }
+
+
+        .tn-selected-content {
+            position: relative;
+        }
+
+
+        .tn-selected-label {
+            color:
+                #6bcaff;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+
+        #bookingTurfInfo {
+            width: 100%;
+        }
+
+
+        /* These styles also support markup generated by booking.js */
+
+        #bookingTurfInfo h3 {
+            margin:
+                0 0 19px;
+
+            color:
+                #f2f9ff;
+
+            font-size:
+                29px;
+
+            letter-spacing:
+                -1px;
+        }
+
+
+        .tn-turf-grid {
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                11px;
+        }
+
+
+        .tn-turf-info {
+            padding:
+                14px;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(3,13,23,0.40);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+        }
+
+
+        .tn-turf-info span {
+            display: block;
+
+            margin-bottom:
+                6px;
+
+            color:
+                #7f94a6;
+
+            font-size:
+                8px;
+
+            font-weight:
+                850;
+
+            letter-spacing:
+                1.2px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .tn-turf-info strong {
+            color:
+                #edf7ff;
+
+            font-size:
+                14px;
+        }
+
+
+        .tn-turf-price strong {
+            color:
+                #6fcaff;
+        }
+
+
+        .tn-activities {
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                7px;
+
+            margin-top:
+                14px;
+        }
+
+
+        .tn-activity {
+            padding:
+                6px 10px;
+
+            border-radius:
+                999px;
+
+            color:
+                #a7ebce;
+
+            background:
+                rgba(98,214,163,0.09);
+
+            border:
+                1px solid
+                rgba(98,214,163,0.15);
+
+            font-size:
+                9px;
+
+            font-weight:
+                750;
+        }
+
+
+        /* =====================================================
+           GENERIC CARD
+        ===================================================== */
+
+        .tn-card {
+            padding:
+                23px;
+
+            border-radius:
+                21px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(19,32,45,0.98),
+                    rgba(10,20,30,0.99)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.075);
+
+            box-shadow:
+                0 18px 50px
+                rgba(0,0,0,0.22);
+        }
+
+
+        .tn-card-title {
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                12px;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .tn-card-title-left {
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+        }
+
+
+        .tn-number {
+            width:
+                30px;
+
+            height:
+                30px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            flex:
+                0 0 30px;
+
+            border-radius:
+                9px;
+
+            color:
+                #70caff;
+
+            background:
+                rgba(85,184,255,0.09);
+
+            border:
+                1px solid
+                rgba(85,184,255,0.15);
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+        }
+
+
+        .tn-card-title h2 {
+            margin: 0;
+
+            color:
+                #edf6fc;
+
+            font-size:
+                17px;
+
+            letter-spacing:
+                -.3px;
+        }
+
+
+        .tn-card-title small {
+            color:
+                #718495;
+
+            font-size:
+                9px;
+
+            font-weight:
+                700;
+        }
+
+
+        /* =====================================================
+           DATE
+        ===================================================== */
+
+        .tn-date-input {
+            width:
+                100%;
+
+            box-sizing:
+                border-box;
+
+            padding:
+                14px 15px;
+
+            border-radius:
+                13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.09);
+
+            background:
+                #091521;
+
+            color:
+                #edf6fc;
+
+            outline:
+                none;
+
+            font-size:
+                12px;
+
+            color-scheme:
+                dark;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .tn-date-input:focus {
+            border-color:
+                rgba(85,184,255,0.60);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(85,184,255,0.06);
+        }
+
+
+        /* =====================================================
+           CANCELLATION POLICY
+        ===================================================== */
+
+        .tn-policy {
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            gap:
+                13px;
+
+            padding:
+                17px;
+
+            border-radius:
+                18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(111,87,40,0.18),
+                    rgba(30,27,22,0.92)
+                );
+
+            border:
+                1px solid
+                rgba(215,181,109,0.17);
+        }
+
+
+        .tn-policy-icon {
+            width:
+                34px;
+
+            height:
+                34px;
+
+            flex:
+                0 0 34px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                10px;
+
+            color:
+                #e4c982;
+
+            background:
+                rgba(215,181,109,0.10);
+
+            border:
+                1px solid
+                rgba(215,181,109,0.13);
+
+            font-weight:
+                900;
+        }
+
+
+        .tn-policy-content strong {
+            display:
+                block;
+
+            color:
+                #e9d29a;
+
+            font-size:
+                12px;
+
+            margin-bottom:
+                4px;
+        }
+
+
+        .tn-policy-content p {
+            margin:
+                0;
+
+            color:
+                #a59d8f;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.65;
+        }
+
+
+        /* =====================================================
+           SLOTS
+        ===================================================== */
+
+        .tn-slot-header {
+            margin-bottom:
+                15px;
+        }
+
+
+        .tn-slot-header h2 {
+            margin:
+                0 0 5px;
+
+            color:
+                #eef7fc;
+
+            font-size:
+                18px;
+        }
+
+
+        .tn-slot-header p {
+            margin:
+                0;
+
+            color:
+                #718596;
+
+            font-size:
+                10px;
+        }
+
+
+        .tn-slot-legend {
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .tn-legend {
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+
+            padding:
+                6px 9px;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.055);
+
+            color:
+                #8193a3;
+
+            font-size:
+                8px;
+
+            font-weight:
+                750;
+        }
+
+
+        .tn-dot {
+            width:
+                7px;
+
+            height:
+                7px;
+
+            border-radius:
+                50%;
+        }
+
+
+        .tn-dot.available {
+            background:
+                #62d6a3;
+
+            box-shadow:
+                0 0 8px
+                rgba(98,214,163,0.5);
+        }
+
+
+        .tn-dot.booked {
+            background:
+                #e87979;
+        }
+
+
+        .tn-dot.selected {
+            background:
+                #5dbdff;
+
+            box-shadow:
+                0 0 8px
+                rgba(93,189,255,0.5);
+        }
+
+
+        /* IMPORTANT:
+           Existing booking.js uses #slotList.
+        */
+
+        #slotList {
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap:
+                11px;
+        }
+
+
+        #slotList > * {
+            min-width:
+                0;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .tn-form-grid {
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap:
+                14px;
+        }
+
+
+        .tn-field {
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                7px;
+        }
+
+
+        .tn-field.full {
+            grid-column:
+                1 / -1;
+        }
+
+
+        .tn-field label {
+            color:
+                #a9b8c5;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+        }
+
+
+        .tn-field input {
+            width:
+                100%;
+
+            box-sizing:
+                border-box;
+
+            padding:
+                14px 15px;
+
+            border-radius:
+                13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.085);
+
+            background:
+                #091521;
+
+            color:
+                #edf6fc;
+
+            outline:
+                none;
+
+            font-size:
+                12px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .tn-field input::placeholder {
+            color:
+                #5e7182;
+        }
+
+
+        .tn-field input:focus {
+            border-color:
+                rgba(85,184,255,0.58);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(85,184,255,0.06);
+        }
+
+
+        #confirmBookingBtn {
+            width:
+                100%;
+
+            margin-top:
+                16px;
+
+            padding:
+                15px;
+
+            border:
+                1px solid
+                rgba(125,211,255,0.22);
+
+            border-radius:
+                14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #58bfff,
+                    #398ed6
+                );
+
+            color:
+                #04101a;
+
+            font-size:
+                12px;
+
+            font-weight:
+                900;
+
+            cursor:
+                pointer;
+
+            transition:
+                .2s ease;
+        }
+
+
+        #confirmBookingBtn:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 13px 28px
+                rgba(57,143,214,0.24);
+        }
+
+
+        #confirmBookingBtn:disabled {
+            opacity:
+                .50;
+
+            cursor:
+                not-allowed;
+
+            transform:
+                none;
+
+            box-shadow:
+                none;
+        }
+
+
+        #bookingMessage {
+            min-height:
+                18px;
+
+            margin-top:
+                11px;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.5;
+        }
+
+
+        /* =====================================================
+           CANCEL BOOKING
+        ===================================================== */
+
+        .tn-cancel-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(49,32,38,0.97),
+                    rgba(23,19,25,0.99)
+                );
+
+            border-color:
+                rgba(240,139,139,0.13);
+        }
+
+
+        .tn-cancel-intro {
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            gap:
+                12px;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .tn-cancel-icon {
+            width:
+                36px;
+
+            height:
+                36px;
+
+            flex:
+                0 0 36px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                11px;
+
+            color:
+                #f09a9a;
+
+            background:
+                rgba(240,139,139,0.09);
+
+            border:
+                1px solid
+                rgba(240,139,139,0.14);
+        }
+
+
+        .tn-cancel-intro h2 {
+            margin:
+                0 0 4px;
+
+            color:
+                #f2e6e8;
+
+            font-size:
+                17px;
+        }
+
+
+        .tn-cancel-intro p {
+            margin:
+                0;
+
+            color:
+                #957f86;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.6;
+        }
+
+
+        .tn-cancel-form {
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr auto;
+
+            gap:
+                10px;
+        }
+
+
+        #cancelPhone {
+            width:
+                100%;
+
+            box-sizing:
+                border-box;
+
+            padding:
+                14px 15px;
+
+            border-radius:
+                13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            background:
+                #09141e;
+
+            color:
+                #edf6fc;
+
+            outline:
+                none;
+
+            font-size:
+                12px;
+        }
+
+
+        #cancelPhone:focus {
+            border-color:
+                rgba(240,139,139,0.48);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(240,139,139,0.05);
+        }
+
+
+        #cancelBookingBtn {
+            padding:
+                0 19px;
+
+            border-radius:
+                13px;
+
+            border:
+                1px solid
+                rgba(240,139,139,0.20);
+
+            background:
+                rgba(240,139,139,0.08);
+
+            color:
+                #efa0a0;
+
+            font-size:
+                10px;
+
+            font-weight:
+                850;
+
+            cursor:
+                pointer;
+
+            transition:
+                .2s ease;
+        }
+
+
+        #cancelBookingBtn:hover {
+            background:
+                rgba(240,139,139,0.15);
+
+            border-color:
+                rgba(240,139,139,0.32);
+        }
+
+
+        #cancelBookingBtn:disabled {
+            opacity:
+                .45;
+
+            cursor:
+                not-allowed;
+        }
+
+
+        #cancelMessage {
+            min-height:
+                18px;
+
+            margin-top:
+                10px;
+
+            color:
+                #9b858a;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.5;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 760px) {
+
+            .tn-booking-nav {
+                height:
+                    66px;
+
+                padding:
+                    0 18px;
+
+                margin:
+                    0 -20px;
+            }
+
+
+            .tn-booking-logo {
+                font-size:
+                    22px;
+            }
+
+
+            .tn-booking-back {
+                font-size:
+                    9px;
+            }
+
+
+            .tn-booking-header {
+                padding:
+                    38px 0 24px;
+            }
+
+
+            .tn-booking-header h1 {
+                font-size:
+                    34px;
+
+                letter-spacing:
+                    -1.5px;
+            }
+
+
+            .tn-selected-card {
+                padding:
+                    21px;
+
+                border-radius:
+                    19px;
+            }
+
+
+            .tn-turf-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .tn-card {
+                padding:
+                    18px;
+
+                border-radius:
+                    19px;
+            }
+
+
+            #slotList {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+
+            .tn-form-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .tn-field.full {
+                grid-column:
+                    auto;
+            }
+
+
+            .tn-cancel-form {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            #cancelBookingBtn {
+                min-height:
+                    45px;
+            }
+        }
+
+
+        @media (max-width: 430px) {
+
+            #slotList {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .tn-booking-header h1 {
+                font-size:
+                    30px;
+            }
+
+
+            .tn-selected-card h3,
+            #bookingTurfInfo h3 {
+                font-size:
+                    24px;
+            }
+
+
+            .tn-booking-nav {
+                padding:
+                    0 14px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="tn-booking-page">
+
+        <!-- =================================================
+             NAVBAR
+        ================================================== -->
+
+        <header class="tn-booking-nav">
+
+            <a
+                href="index.html"
+                class="tn-booking-logo"
+            >
+                TurfNova
+            </a>
+
+            <a
+                href="index.html#turfs"
+                class="tn-booking-back"
+            >
+                ← Back to Turfs
+            </a>
+
+        </header>
+
+
+        <main class="tn-booking-wrap">
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+
+            <section class="tn-booking-header">
+
+                <span class="tn-booking-eyebrow">
+                    TurfNova Booking
+                </span>
+
+                <h1>
+                    Reserve Your Slot
+                </h1>
+
+                <p>
+                    Choose your preferred date and time slot,
+                    enter your details, and confirm your booking
+                    in just a few steps.
+                </p>
+
+            </section>
+
+
+            <div class="tn-booking-stack">
+
+
+                <!-- =================================================
+                     SELECTED TURF
+                ================================================== -->
+
+                <section class="tn-selected-card">
+
+                    <div class="tn-selected-content">
+
+                        <div class="tn-selected-label">
+                            Selected Turf
+                        </div>
+
+                        <!--
+                            booking.js loads the selected turf
+                            information into this element.
+                        -->
+
+                        <div id="bookingTurfInfo">
+
+                            <div class="booking-loading">
+                                Loading turf information...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     DATE
+                ================================================== -->
+
+                <section class="tn-card">
+
+                    <div class="tn-card-title">
+
+                        <div class="tn-card-title-left">
+
+                            <div class="tn-number">
+                                01
+                            </div>
+
+                            <div>
+                                <h2>
+                                    Select Date
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <small>
+                            Choose your booking day
+                        </small>
+
+                    </div>
+
+
+                    <input
+                        type="date"
+                        id="bookingDate"
+                        class="tn-date-input"
+                    >
+
+                </section>
+
+
+                <!-- =================================================
+                     CANCELLATION POLICY
+                ================================================== -->
+
+                <section class="tn-policy">
+
+                    <div class="tn-policy-icon">
+                        !
+                    </div>
+
+                    <div class="tn-policy-content">
+
+                        <strong>
+                            Cancellation Policy
+                        </strong>
+
+                        <p>
+                            A confirmed booking can be cancelled
+                            up to <strong>5 hours before</strong>
+                            the selected slot. After that,
+                            cancellation is not available.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SLOTS
+                ================================================== -->
+
+                <section class="tn-card">
+
+                    <div class="tn-slot-header">
+
+                        <div class="tn-card-title">
+
+                            <div class="tn-card-title-left">
+
+                                <div class="tn-number">
+                                    02
+                                </div>
+
+                                <h2>
+                                    Select Time Slot
+                                </h2>
+
+                            </div>
+
+                            <small>
+                                Available timings
+                            </small>
+
+                        </div>
+
+                        <p>
+                            Select an available slot below.
+                            Already booked slots cannot be selected.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SLOT LEGEND -->
+
+                    <div class="tn-slot-legend">
+
+                        <div class="tn-legend">
+
+                            <span
+                                class="tn-dot available"
+                            ></span>
+
+                            Available
+
+                        </div>
+
+
+                        <div class="tn-legend">
+
+                            <span
+                                class="tn-dot selected"
+                            ></span>
+
+                            Selected
+
+                        </div>
+
+
+                        <div class="tn-legend">
+
+                            <span
+                                class="tn-dot booked"
+                            ></span>
+
+                            Booked
+
+                        </div>
+
+                    </div>
+
+
+                    <!--
+                        booking.js generates the actual slots
+                        inside #slotList.
+                    -->
+
+                    <div id="slotList">
+
+                        <div class="booking-loading">
+                            Select a date to view available slots.
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CUSTOMER DETAILS
+                ================================================== -->
+
+                <section class="tn-card">
+
+                    <div class="tn-card-title">
+
+                        <div class="tn-card-title-left">
+
+                            <div class="tn-number">
+                                03
+                            </div>
+
+                            <h2>
+                                Your Details
+                            </h2>
+
+                        </div>
+
+                        <small>
+                            Required for booking
+                        </small>
+
+                    </div>
+
+
+                    <div class="tn-form-grid">
+
+
+                        <!-- NAME -->
+
+                        <div class="tn-field">
+
+                            <label for="customerName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                placeholder="Enter your name"
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+
+                        <!-- PHONE -->
+
+                        <div class="tn-field">
+
+                            <label for="customerPhone">
+                                Mobile Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="customerPhone"
+                                placeholder="10-digit mobile number"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="confirmBookingBtn"
+                    >
+                        Confirm Booking
+                    </button>
+
+
+                    <div
+                        id="bookingMessage"
+                        class="booking-message"
+                    ></div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CANCEL BOOKING
+                ================================================== -->
+
+                <section class="tn-card tn-cancel-card">
+
+                    <div class="tn-cancel-intro">
+
+                        <div class="tn-cancel-icon">
+                            ↩
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Cancel Your Booking
+                            </h2>
+
+                            <p>
+                                Enter the same mobile number used
+                                during booking. Cancellation is
+                                available only up to 5 hours before
+                                the selected slot.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tn-cancel-form">
+
+                        <input
+                            type="tel"
+                            id="cancelPhone"
+                            placeholder="Enter booking mobile number"
+                            maxlength="10"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                        >
+
+
+                        <button
+                            type="button"
+                            id="cancelBookingBtn"
+                        >
+                            Cancel Booking
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="cancelMessage"
+                        class="cancel-message"
+                    ></div>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOOKING JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="booking.js"
+    ></script>
+
+</body>
+
+</html>

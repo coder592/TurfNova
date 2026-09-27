@@ -1,0 +1,2821 @@
+:root {
+    --admin-bg: #080d14;
+    --admin-bg-2: #0d1520;
+    --admin-surface: #111b27;
+    --admin-surface-2: #172333;
+
+    --admin-blue: #55b8ff;
+    --admin-blue-soft: rgba(85,184,255,0.14);
+
+    --admin-green: #62d6a3;
+    --admin-green-soft: rgba(98,214,163,0.14);
+
+    --admin-gold: #d7b56d;
+    --admin-gold-soft: rgba(215,181,109,0.14);
+
+    --admin-red: #f08b8b;
+    --admin-red-soft: rgba(240,139,139,0.12);
+
+    --admin-text: #f4f8fc;
+    --admin-muted: #91a0b1;
+
+    --admin-border: rgba(255,255,255,0.08);
+
+    --admin-shadow:
+        0 24px 70px rgba(0,0,0,0.35);
+
+    --admin-radius: 22px;
+}
+
+
+/* =====================================================
+   RESET / ADMIN BODY
+===================================================== */
+
+.admin-login-body,
+.admin-dashboard-body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--admin-text);
+}
+
+
+.admin-login-body {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(38,120,190,0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(55,190,130,0.12),
+            transparent 35%
+        ),
+        var(--admin-bg);
+}
+
+
+.admin-dashboard-body {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(46,120,180,0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #070c12,
+            #0c131d
+        );
+}
+
+
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+
+.admin-login-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+
+.admin-login-card {
+    width: min(100%, 460px);
+
+    padding: 42px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22,35,50,0.97),
+            rgba(12,21,32,0.97)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.48);
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+.admin-login-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(70,180,255,0.12);
+
+    filter: blur(60px);
+
+    top: -100px;
+    right: -80px;
+
+    pointer-events: none;
+}
+
+
+.admin-login-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 42px;
+}
+
+
+.admin-login-brand span {
+    font-size: 28px;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    color: #ffffff;
+}
+
+
+.admin-login-brand strong {
+    padding: 5px 10px;
+
+    border-radius: 8px;
+
+    background:
+        var(--admin-blue-soft);
+
+    border:
+        1px solid rgba(85,184,255,0.28);
+
+    color:
+        var(--admin-blue);
+
+    font-size: 11px;
+
+    letter-spacing: 1.4px;
+}
+
+
+.login-heading {
+    margin-bottom: 30px;
+}
+
+
+.login-kicker {
+    display: block;
+
+    color:
+        var(--admin-blue);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+
+.login-heading h1 {
+    margin: 0 0 10px;
+
+    font-size: 38px;
+
+    line-height: 1.1;
+
+    letter-spacing: -1.4px;
+}
+
+
+.login-heading p {
+    margin: 0;
+
+    color:
+        var(--admin-muted);
+
+    line-height: 1.7;
+}
+
+
+.login-field {
+    margin-bottom: 20px;
+}
+
+
+.login-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color:
+        #dce5ee;
+}
+
+
+.login-field input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px 15px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid var(--admin-border);
+
+    background:
+        rgba(255,255,255,0.045);
+
+    color:
+        var(--admin-text);
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.login-field input:focus {
+    border-color:
+        rgba(85,184,255,0.65);
+
+    background:
+        rgba(85,184,255,0.05);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(85,184,255,0.08);
+}
+
+
+.login-field input::placeholder {
+    color:
+        #657383;
+}
+
+
+.admin-login-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 15px 18px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4aaef3,
+            #3289ce
+        );
+
+    color:
+        #06111b;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 14px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(40,150,220,0.20);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.admin-login-btn:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 17px 35px
+        rgba(40,150,220,0.28);
+}
+
+
+.login-message {
+    min-height: 20px;
+
+    margin: 15px 0 0;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+.login-footer-text {
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        #627183;
+
+    font-size: 9px;
+
+    letter-spacing: 1.8px;
+}
+
+
+/* =====================================================
+   DASHBOARD TOPBAR
+===================================================== */
+
+.admin-dashboard {
+    width: min(
+        1180px,
+        calc(100% - 40px)
+    );
+
+    margin: 0 auto;
+
+    padding:
+        24px 0 40px;
+}
+
+
+.admin-topbar {
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        0 4px 20px;
+
+    border-bottom:
+        1px solid var(--admin-border);
+}
+
+
+.admin-brand-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.admin-brand {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.admin-brand span {
+    font-size: 25px;
+
+    font-weight: 850;
+
+    letter-spacing: -0.8px;
+}
+
+
+.admin-brand small {
+    color:
+        var(--admin-blue);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+}
+
+
+.admin-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.admin-view-btn,
+.admin-logout-btn {
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    padding:
+        10px 14px;
+
+    font-size: 12px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+
+.admin-view-btn {
+    color:
+        #cdeeff;
+
+    background:
+        var(--admin-blue-soft);
+
+    border:
+        1px solid
+        rgba(85,184,255,0.18);
+}
+
+
+.admin-logout-btn {
+    color:
+        #ffd5d5;
+
+    background:
+        var(--admin-red-soft);
+
+    border:
+        1px solid
+        rgba(240,139,139,0.18);
+}
+
+
+/* =====================================================
+   DASHBOARD INTRO
+===================================================== */
+
+.admin-intro {
+    padding:
+        48px 4px 30px;
+}
+
+
+.admin-kicker {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color:
+        var(--admin-blue);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.admin-intro h1 {
+    margin:
+        0 0 10px;
+
+    font-size:
+        clamp(34px, 5vw, 54px);
+
+    letter-spacing:
+        -2px;
+}
+
+
+.admin-intro p {
+    margin: 0;
+
+    color:
+        var(--admin-muted);
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.admin-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+
+.admin-stat-card {
+    min-height: 155px;
+
+    box-sizing: border-box;
+
+    padding: 25px;
+
+    border-radius:
+        var(--admin-radius);
+
+    border:
+        1px solid var(--admin-border);
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 18px 50px
+        rgba(0,0,0,0.18);
+}
+
+
+.admin-stat-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    filter: blur(35px);
+
+    right: -45px;
+    bottom: -55px;
+}
+
+
+.stat-total {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(48,92,126,0.42),
+            rgba(17,29,42,0.96)
+        );
+
+    border-color:
+        rgba(85,184,255,0.16);
+}
+
+
+.stat-total::after {
+    background:
+        rgba(85,184,255,0.16);
+}
+
+
+.stat-today {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45,105,86,0.38),
+            rgba(16,31,29,0.96)
+        );
+
+    border-color:
+        rgba(98,214,163,0.16);
+}
+
+
+.stat-today::after {
+    background:
+        rgba(98,214,163,0.15);
+}
+
+
+.admin-stat-card span {
+    display: block;
+
+    color:
+        var(--admin-muted);
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    font-weight: 800;
+}
+
+
+.admin-stat-card strong {
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 44px;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+.admin-stat-card small {
+    display: block;
+
+    margin-top: 12px;
+
+    color:
+        #748395;
+
+    font-size: 11px;
+}
+/* =====================================================
+   ADMIN PANEL
+===================================================== */
+
+.admin-panel {
+    border:
+        1px solid var(--admin-border);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,32,45,0.95),
+            rgba(12,20,30,0.98)
+        );
+
+    border-radius:
+        var(--admin-radius);
+
+    overflow: hidden;
+
+    box-shadow:
+        var(--admin-shadow);
+}
+
+
+.admin-panel-heading {
+    padding:
+        23px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid var(--admin-border);
+}
+
+
+.admin-panel-heading span {
+    display: block;
+
+    color:
+        var(--admin-blue);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+
+    margin-bottom: 6px;
+}
+
+
+.admin-panel-heading h2 {
+    margin: 0;
+
+    font-size: 20px;
+
+    letter-spacing: -0.4px;
+}
+
+
+.panel-indicator {
+    color:
+        var(--admin-green);
+
+    background:
+        var(--admin-green-soft);
+
+    border:
+        1px solid
+        rgba(98,214,163,0.16);
+
+    padding:
+        6px 9px;
+
+    border-radius: 8px;
+
+    font-size: 8px;
+
+    font-weight: 850;
+
+    letter-spacing: 1.4px;
+}
+
+
+/* =====================================================
+   ADMIN TABLE
+===================================================== */
+
+.admin-table-wrap {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.admin-table {
+    width: 100%;
+
+    min-width: 650px;
+
+    border-collapse: collapse;
+}
+
+
+.admin-table th {
+    padding:
+        14px 20px;
+
+    text-align: left;
+
+    color:
+        #708094;
+
+    font-size: 9px;
+
+    letter-spacing: 1.2px;
+
+    font-weight: 800;
+
+    background:
+        rgba(255,255,255,0.025);
+}
+
+
+.admin-table td {
+    padding:
+        16px 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.055);
+
+    color:
+        #cbd5df;
+
+    font-size: 12px;
+}
+
+
+.admin-table tbody tr {
+    transition:
+        background .2s ease;
+}
+
+
+.admin-table tbody tr:hover {
+    background:
+        rgba(85,184,255,0.035);
+}
+
+
+/* CUSTOMER */
+
+.customer-cell {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.customer-cell strong {
+    color:
+        #eef5fb;
+
+    font-size: 13px;
+}
+
+
+.customer-cell small {
+    color:
+        #748293;
+
+    font-size: 10px;
+}
+
+
+/* STATUS */
+
+.status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding:
+        6px 9px;
+
+    border-radius: 8px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .5px;
+
+    text-transform: uppercase;
+}
+
+
+.status-confirmed {
+    color:
+        #a5f0cc;
+
+    background:
+        rgba(98,214,163,0.11);
+
+    border:
+        1px solid
+        rgba(98,214,163,0.17);
+}
+
+
+.status-cancelled {
+    color:
+        #ffc0c0;
+
+    background:
+        rgba(240,139,139,0.10);
+
+    border:
+        1px solid
+        rgba(240,139,139,0.16);
+}
+
+
+.table-loading,
+.table-empty {
+    text-align: center;
+
+    color:
+        #718093 !important;
+
+    padding:
+        35px !important;
+}
+
+
+/* =====================================================
+   ADMIN FOOTER
+===================================================== */
+
+.admin-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        22px 4px 0;
+
+    color:
+        #586676;
+
+    font-size: 10px;
+}
+
+
+.admin-footer span {
+    color:
+        #8c9bab;
+
+    font-weight: 800;
+}
+
+
+.admin-footer p {
+    margin: 0;
+}
+
+
+/* =====================================================
+   BOOKING NAVBAR
+===================================================== */
+
+.booking-navbar {
+    width: 100%;
+
+    height: 76px;
+
+    padding:
+        0 7%;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        rgba(7,17,31,0.94);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    position: relative;
+
+    z-index: 10;
+
+    backdrop-filter:
+        blur(15px);
+}
+
+
+.booking-logo {
+    color:
+        #ffffff;
+
+    text-decoration: none;
+
+    font-size: 26px;
+
+    font-weight: 850;
+
+    letter-spacing: -1px;
+}
+
+
+.booking-back {
+    color:
+        #a8c3d8;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        color .2s ease;
+}
+
+
+.booking-back:hover {
+    color:
+        #62c6ff;
+}
+
+
+/* =====================================================
+   BOOKING PAGE
+===================================================== */
+
+.booking-page {
+    min-height: 100vh;
+
+    padding:
+        55px 20px 80px;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(45,130,195,0.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(65,190,145,0.08),
+            transparent 30%
+        ),
+        #08111c;
+
+    color:
+        #eef5fb;
+}
+
+
+.booking-header {
+    max-width: 1000px;
+
+    margin:
+        0 auto 34px;
+}
+
+
+.booking-header > span {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color:
+        #58bfff;
+
+    font-size: 10px;
+
+    font-weight: 850;
+
+    letter-spacing: 2px;
+}
+
+
+.booking-header h1 {
+    margin:
+        0 0 12px;
+
+    font-size:
+        clamp(34px, 6vw, 54px);
+
+    letter-spacing:
+        -2px;
+}
+
+
+.booking-header p {
+    margin: 0;
+
+    color:
+        #8798a9;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+}
+
+
+.booking-container {
+    width: min(
+        1000px,
+        100%
+    );
+
+    margin:
+        0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* =====================================================
+   SELECTED TURF CARD
+===================================================== */
+
+.booking-turf-card {
+    padding: 28px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35,74,104,0.75),
+            rgba(15,28,42,0.97)
+        );
+
+    border:
+        1px solid
+        rgba(91,188,245,0.20);
+
+    box-shadow:
+        0 24px 70px
+        rgba(0,0,0,0.28);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.booking-turf-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(80,190,255,0.12);
+
+    filter:
+        blur(50px);
+
+    right:
+        -80px;
+
+    top:
+        -90px;
+
+    pointer-events: none;
+}
+
+
+.booking-turf-kicker {
+    color:
+        #6fcaff;
+
+    font-size: 9px;
+
+    font-weight: 850;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+.booking-turf-card h3 {
+    margin:
+        0 0 22px;
+
+    font-size: 30px;
+
+    letter-spacing: -1px;
+}
+
+
+.booking-turf-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.booking-info-item {
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(5,15,25,0.42);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+}
+
+
+.booking-info-item span {
+    display: block;
+
+    color:
+        #8194a7;
+
+    font-size: 8px;
+
+    font-weight: 850;
+
+    letter-spacing: 1.3px;
+
+    margin-bottom: 7px;
+}
+
+
+.booking-info-item strong {
+    color:
+        #eef7ff;
+
+    font-size: 14px;
+}
+
+
+.price-item strong {
+    color:
+        #76d5ff;
+}
+
+
+.booking-activities {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 16px;
+}
+
+
+.booking-activities .activity {
+    display: inline-flex;
+
+    padding:
+        7px 11px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(98,214,163,0.10);
+
+    border:
+        1px solid
+        rgba(98,214,163,0.17);
+
+    color:
+        #a5ebcb;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.booking-loading {
+    color:
+        #8191a1;
+}
+
+
+.booking-error {
+    padding: 20px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(240,139,139,0.08);
+
+    border:
+        1px solid
+        rgba(240,139,139,0.15);
+
+    color:
+        #f2a6a6;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   BOOKING DATE
+===================================================== */
+
+.booking-date-section {
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(26,38,52,0.95),
+            rgba(14,23,34,0.96)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.075);
+}
+
+
+.booking-date-section label {
+    display: block;
+
+    color:
+        #cfdbe6;
+
+    font-size: 12px;
+
+    font-weight: 750;
+
+    margin-bottom: 9px;
+}
+
+
+.booking-date-section input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+        13px 14px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    background:
+        #0b1622;
+
+    color:
+        #edf6ff;
+
+    outline: none;
+
+    color-scheme: dark;
+}
+
+
+.booking-date-section input:focus {
+    border-color:
+        rgba(85,184,255,0.60);
+}
+
+
+/* =====================================================
+   CANCELLATION POLICY
+===================================================== */
+
+.booking-policy {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(104,84,42,0.22),
+            rgba(29,28,24,0.90)
+        );
+
+    border:
+        1px solid
+        rgba(215,181,109,0.18);
+}
+
+
+.policy-icon {
+    width: 34px;
+    height: 34px;
+
+    flex:
+        0 0 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(215,181,109,0.12);
+
+    color:
+        #e3c785;
+
+    font-weight: 900;
+}
+
+
+.booking-policy strong {
+    color:
+        #ead39c;
+
+    font-size: 13px;
+}
+
+
+.booking-policy p {
+    margin:
+        5px 0 0;
+
+    color:
+        #a79f91;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+/* =====================================================
+   BOOKING AREA — PREMIUM
+===================================================== */
+
+.booking-slots-section,
+.booking-form-section,
+.cancellation-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21,34,47,0.98),
+            rgba(10,20,30,0.98)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.075);
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,0.24);
+}
+
+
+/* =====================================================
+   DATE CARD
+===================================================== */
+
+.booking-date-section {
+    position: relative;
+    overflow: hidden;
+
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,40,53,0.98),
+            rgba(11,23,34,0.98)
+        );
+
+    border:
+        1px solid rgba(85,184,255,0.13);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,0.22);
+}
+
+
+.booking-date-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -70px;
+    top: -75px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(85,184,255,0.10);
+
+    filter:
+        blur(35px);
+
+    pointer-events: none;
+}
+
+
+.booking-date-section label {
+    position: relative;
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color:
+        #dbe8f2;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .4px;
+}
+
+
+.booking-date-section input {
+    position: relative;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+        14px 15px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid rgba(255,255,255,0.10);
+
+    background:
+        rgba(5,14,23,0.72);
+
+    color:
+        #f0f7fc;
+
+    outline: none;
+
+    font-size: 12px;
+
+    color-scheme: dark;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.booking-date-section input:hover {
+    border-color:
+        rgba(85,184,255,0.25);
+}
+
+
+.booking-date-section input:focus {
+    border-color:
+        rgba(85,184,255,0.65);
+
+    background:
+        rgba(6,17,28,0.95);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(85,184,255,0.07);
+}
+
+
+/* =====================================================
+   SLOT SECTION
+===================================================== */
+
+.booking-slots-section {
+    padding: 25px;
+}
+
+
+.booking-section-title {
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+.booking-section-title h2 {
+    margin: 0;
+
+    color:
+        #f0f7fb;
+
+    font-size: 19px;
+
+    letter-spacing: -.4px;
+}
+
+
+.booking-section-title span {
+    color:
+        #7890a2;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   SLOT LEGEND
+===================================================== */
+
+.slot-legend {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-bottom: 17px;
+}
+
+
+.slot-legend-item {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        7px 10px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border:
+        1px solid rgba(255,255,255,0.055);
+
+    color:
+        #8294a4;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+.slot-legend-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+}
+
+
+.slot-available-dot {
+    background:
+        #62d6a3;
+
+    box-shadow:
+        0 0 9px rgba(98,214,163,0.5);
+}
+
+
+.slot-booked-dot {
+    background:
+        #e87979;
+
+    box-shadow:
+        0 0 8px rgba(232,121,121,0.35);
+}
+
+
+.slot-selected-dot {
+    background:
+        #5dbdff;
+
+    box-shadow:
+        0 0 9px rgba(93,189,255,0.5);
+}
+
+
+/* =====================================================
+   SLOT GRID
+===================================================== */
+
+.slot-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+/* =====================================================
+   SLOT CARD
+===================================================== */
+
+.slot-btn {
+    position: relative;
+
+    min-height: 76px;
+
+    padding:
+        14px 15px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid rgba(98,214,163,0.13);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,48,43,0.95),
+            rgba(10,29,28,0.98)
+        );
+
+    color:
+        #c5eadb;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.slot-btn::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+
+    width: 3px;
+
+    border-radius: 5px;
+
+    background:
+        #62d6a3;
+
+    opacity:
+        .65;
+}
+
+
+.slot-btn:hover:not(:disabled) {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(98,214,163,0.40);
+
+    box-shadow:
+        0 12px 28px
+        rgba(0,0,0,0.25);
+}
+
+
+.slot-btn strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color:
+        #effff8;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.slot-btn small {
+    color:
+        #6ec79e;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   BOOKED SLOT
+===================================================== */
+
+.slot-btn.booked,
+.slot-btn:disabled {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(58,29,34,0.96),
+            rgba(30,18,23,0.98)
+        );
+
+    border-color:
+        rgba(240,139,139,0.13);
+
+    cursor:
+        not-allowed;
+
+    opacity:
+        .82;
+}
+
+
+.slot-btn.booked::before,
+.slot-btn:disabled::before {
+    background:
+        #e87979;
+}
+
+
+.slot-btn.booked strong,
+.slot-btn:disabled strong {
+    color:
+        #b68d94;
+}
+
+
+.slot-btn.booked small,
+.slot-btn:disabled small {
+    color:
+        #d27782;
+}
+
+
+/* =====================================================
+   SELECTED SLOT
+===================================================== */
+
+.slot-btn.selected {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(29,88,124,0.98),
+            rgba(12,43,64,0.98)
+        );
+
+    border-color:
+        rgba(93,189,255,0.70);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(93,189,255,0.12),
+
+        0 14px 32px
+        rgba(31,135,193,0.18);
+}
+
+
+.slot-btn.selected::before {
+    background:
+        #5dbdff;
+
+    box-shadow:
+        0 0 10px
+        rgba(93,189,255,0.65);
+}
+
+
+.slot-btn.selected strong {
+    color:
+        #f0faff;
+}
+
+
+.slot-btn.selected small {
+    color:
+        #69c8ff;
+}
+
+
+/* =====================================================
+   CUSTOMER DETAILS
+===================================================== */
+
+.booking-form-section {
+    padding: 25px;
+}
+
+
+.booking-form-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -90px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(98,214,163,0.07);
+
+    filter:
+        blur(45px);
+
+    pointer-events: none;
+}
+
+
+.booking-form-grid {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+
+.booking-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.booking-field.full {
+    grid-column:
+        1 / -1;
+}
+
+
+.booking-field label {
+    color:
+        #aebdca;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .4px;
+}
+
+
+.booking-field input,
+.booking-field select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+        14px 15px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid rgba(255,255,255,0.085);
+
+    background:
+        rgba(7,17,27,0.78);
+
+    color:
+        #eef6fb;
+
+    outline: none;
+
+    font-size: 12px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.booking-field input::placeholder {
+    color:
+        #607384;
+}
+
+
+.booking-field input:hover,
+.booking-field select:hover {
+    border-color:
+        rgba(255,255,255,0.15);
+}
+
+
+.booking-field input:focus,
+.booking-field select:focus {
+    border-color:
+        rgba(85,184,255,0.58);
+
+    background:
+        rgba(6,16,26,0.96);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(85,184,255,0.06);
+}
+
+
+/* =====================================================
+   CONFIRM BUTTON
+===================================================== */
+
+.booking-submit {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 17px;
+
+    padding:
+        15px 18px;
+
+    border:
+        1px solid
+        rgba(124,211,255,0.25);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #58bfff,
+            #398ed6
+        );
+
+    color:
+        #04101a;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: .2px;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+}
+
+
+.booking-submit:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(56,147,213,0.25);
+}
+
+
+.booking-submit:disabled {
+    opacity:
+        .5;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+    box-shadow:
+        none;
+}
+
+
+/* =====================================================
+   BOOKING MESSAGE
+===================================================== */
+
+.booking-message {
+    min-height:
+        18px;
+
+    margin-top:
+        12px;
+
+    padding:
+        0 2px;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+}
+
+
+.booking-message.success {
+    color:
+        #6ed8a6;
+}
+
+
+.booking-message.error {
+    color:
+        #f08e8e;
+}
+
+
+/* =====================================================
+   CANCELLATION CARD
+===================================================== */
+
+.cancellation-section {
+    padding:
+        24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(51,34,39,0.96),
+            rgba(24,20,26,0.99)
+        );
+
+    border-color:
+        rgba(240,139,139,0.13);
+}
+
+
+.cancellation-heading {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 13px;
+
+    margin-bottom:
+        18px;
+}
+
+
+.cancellation-icon {
+    width: 38px;
+    height: 38px;
+
+    flex:
+        0 0 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(240,139,139,0.10);
+
+    border:
+        1px solid
+        rgba(240,139,139,0.16);
+
+    color:
+        #f19a9a;
+
+    font-size:
+        15px;
+}
+
+
+.cancellation-heading h2 {
+    margin:
+        0 0 5px;
+
+    color:
+        #f5e8e9;
+
+    font-size:
+        17px;
+}
+
+
+.cancellation-heading p {
+    margin:
+        0;
+
+    color:
+        #9b858b;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.65;
+}
+
+
+.cancellation-form {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap:
+        10px;
+}
+
+
+.cancellation-form input {
+    width:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    padding:
+        14px 15px;
+
+    border-radius:
+        13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    background:
+        rgba(9,16,24,0.82);
+
+    color:
+        #edf5fb;
+
+    outline:
+        none;
+
+    font-size:
+        12px;
+}
+
+
+.cancellation-form input:focus {
+    border-color:
+        rgba(240,139,139,0.50);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(240,139,139,0.06);
+}
+
+
+.cancel-btn {
+    padding:
+        0 20px;
+
+    border:
+        1px solid
+        rgba(240,139,139,0.20);
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(240,139,139,0.09);
+
+    color:
+        #f0a3a3;
+
+    font-size:
+        11px;
+
+    font-weight:
+        850;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+.cancel-btn:hover {
+    background:
+        rgba(240,139,139,0.15);
+
+    border-color:
+        rgba(240,139,139,0.34);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.cancel-btn:disabled {
+    opacity:
+        .45;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+}
+
+
+.cancel-message {
+    min-height:
+        18px;
+
+    margin-top:
+        10px;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+}
+
+
+.cancel-message.success {
+    color:
+        #70d5a5;
+}
+
+
+.cancel-message.error {
+    color:
+        #ef9292;
+}
+
+
+/* =====================================================
+   MOBILE BOOKING UI
+===================================================== */
+
+@media (max-width: 760px) {
+
+    .booking-date-section,
+    .booking-slots-section,
+    .booking-form-section,
+    .cancellation-section {
+        padding:
+            18px;
+    }
+
+
+    .slot-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            9px;
+    }
+
+
+    .slot-btn {
+        min-height:
+            70px;
+
+        padding:
+            12px;
+    }
+
+
+    .booking-form-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .booking-field.full {
+        grid-column:
+            auto;
+    }
+
+
+    .cancellation-form {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .cancel-btn {
+        min-height:
+            45px;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .slot-list {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .booking-section-title {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            5px;
+    }
+
+
+    .booking-turf-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .booking-policy {
+        padding:
+            15px;
+    }
+
+
+    .booking-header h1 {
+        font-size:
+            30px;
+    }
+}
+/* =====================================================
+   FINAL PREMIUM SLOT CARDS
+===================================================== */
+
+#slotList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+
+    width: 100%;
+    margin-top: 16px;
+}
+
+
+/* Main slot card */
+
+#slotList .slot-card {
+    width: 100%;
+    min-height: 86px;
+
+    padding: 17px 18px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 9px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    text-align: left;
+
+    transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease,
+        box-shadow .22s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Available */
+
+#slotList .slot-card.available {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(23, 62, 73, 0.95),
+            rgba(12, 31, 39, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(76, 211, 170, 0.22);
+
+    color: #eafff8;
+
+    box-shadow:
+        0 12px 28px
+        rgba(0, 0, 0, 0.20);
+}
+
+
+/* Available hover */
+
+#slotList .slot-card.available:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(98, 214, 163, 0.55);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28, 78, 88, 0.98),
+            rgba(13, 38, 46, 1)
+        );
+
+    box-shadow:
+        0 16px 34px
+        rgba(50, 190, 150, 0.13);
+}
+
+
+/* Selected available slot */
+
+#slotList .slot-card.available.selected {
+    border-color:
+        #62d6a3;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32, 105, 84, 0.95),
+            rgba(15, 48, 42, 1)
+        );
+
+    box-shadow:
+        0 0 0 2px
+        rgba(98, 214, 163, 0.13),
+
+        0 18px 38px
+        rgba(62, 208, 160, 0.15);
+}
+
+
+/* Booked */
+
+#slotList .slot-card.booked {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(57, 43, 48, 0.95),
+            rgba(27, 23, 29, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(240, 139, 139, 0.20);
+
+    color:
+        #e6dfe2;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+/* Booked hover */
+
+#slotList .slot-card.booked:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(240, 139, 139, 0.42);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(70, 47, 53, 0.98),
+            rgba(31, 25, 31, 1)
+        );
+}
+
+
+/* Selected booked */
+
+#slotList .slot-card.selected-booked {
+    border-color:
+        #d7b56d;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(83, 68, 39, 0.96),
+            rgba(36, 31, 24, 1)
+        );
+
+    box-shadow:
+        0 0 0 2px
+        rgba(215, 181, 109, 0.12),
+
+        0 16px 34px
+        rgba(215, 181, 109, 0.10);
+}
+
+
+/* Time */
+
+#slotList .slot-time {
+    display: block;
+
+    color:
+        #f3f8fc;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        -0.15px;
+
+    line-height: 1.2;
+}
+
+
+/* Available / Booked label */
+
+#slotList .slot-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding:
+        5px 9px;
+
+    border-radius:
+        999px;
+
+    font-size: 8px;
+
+    font-weight: 850;
+
+    letter-spacing:
+        1.1px;
+
+    line-height: 1;
+}
+
+
+/* Available label */
+
+#slotList .available .slot-status {
+    color:
+        #8be7c2;
+
+    background:
+        rgba(98, 214, 163, 0.11);
+
+    border:
+        1px solid
+        rgba(98, 214, 163, 0.18);
+}
+
+
+/* Booked label */
+
+#slotList .booked .slot-status {
+    color:
+        #f2aaaa;
+
+    background:
+        rgba(240, 139, 139, 0.10);
+
+    border:
+        1px solid
+        rgba(240, 139, 139, 0.17);
+}
+
+
+/* Selected booked label */
+
+#slotList .selected-booked .slot-status {
+    color:
+        #efd394;
+
+    background:
+        rgba(215, 181, 109, 0.12);
+
+    border:
+        1px solid
+        rgba(215, 181, 109, 0.20);
+}
+
+
+/* Loading / empty / error */
+
+#slotList .slots-loading,
+#slotList .slots-empty,
+#slotList .slots-error {
+    grid-column:
+        1 / -1;
+
+    min-height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 34, 47, 0.95),
+            rgba(12, 21, 31, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    color:
+        #8292a2;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    #slotList {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    #slotList .slot-card {
+        min-height: 78px;
+
+        padding:
+            14px 12px;
+
+        border-radius:
+            15px;
+
+        gap: 8px;
+    }
+
+
+    #slotList .slot-time {
+        font-size: 12px;
+    }
+
+
+    #slotList .slot-status {
+        font-size: 7px;
+
+        padding:
+            5px 7px;
+
+        letter-spacing:
+            .8px;
+    }
+}

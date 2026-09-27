@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TurfNova | Admin Login
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body class="admin-login-body">
+
+
+<main class="admin-login-page">
+
+    <section class="admin-login-card">
+
+
+        <div class="admin-login-brand">
+
+            <span>
+                TurfNova
+            </span>
+
+            <strong>
+                ADMIN
+            </strong>
+
+        </div>
+
+
+        <div class="login-heading">
+
+            <span class="login-kicker">
+                SECURE ACCESS
+            </span>
+
+            <h1>
+                Welcome Back
+            </h1>
+
+            <p>
+                Sign in to manage your turf bookings
+                and daily schedule.
+            </p>
+
+        </div>
+
+
+        <form id="loginForm">
+
+
+            <div class="login-field">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="admin@turfnova.com"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="login-field">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="admin-login-btn"
+            >
+
+                <span>
+                    Sign In
+                </span>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <p
+                id="loginMessage"
+                class="login-message"
+            ></p>
+
+        </form>
+
+
+        <div class="login-footer-text">
+            TURFNOVA • TURF MANAGEMENT SYSTEM
+        </div>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="admin.js"
+></script>
+
+</body>
+
+</html>

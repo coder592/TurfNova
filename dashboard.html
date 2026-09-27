@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TurfNova | Admin Dashboard
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body class="admin-dashboard-body">
+
+
+<main class="admin-dashboard">
+
+
+    <!-- TOP BAR -->
+
+    <header class="admin-topbar">
+
+        <a
+            href="index.html"
+            class="admin-brand-link"
+        >
+
+            <div class="admin-brand">
+
+                <span>
+                    TurfNova
+                </span>
+
+                <small>
+                    ADMIN CONTROL
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <div class="admin-actions">
+
+            <a
+                href="index.html"
+                class="admin-view-btn"
+            >
+                View Website
+            </a>
+
+            <button
+                id="logoutBtn"
+                class="admin-logout-btn"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- INTRO -->
+
+    <section class="admin-intro">
+
+        <span class="admin-kicker">
+            TURFNOVA ADMIN
+        </span>
+
+        <h1>
+            Dashboard
+        </h1>
+
+        <p>
+            Monitor bookings and manage today's activity.
+        </p>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="admin-stats">
+
+        <div class="admin-stat-card stat-total">
+
+            <span>
+                TOTAL BOOKINGS
+            </span>
+
+            <strong id="totalBookings">
+                0
+            </strong>
+
+            <small>
+                All bookings
+            </small>
+
+        </div>
+
+
+        <div class="admin-stat-card stat-today">
+
+            <span>
+                TODAY'S BOOKINGS
+            </span>
+
+            <strong id="todayBookings">
+                0
+            </strong>
+
+            <small>
+                Scheduled for today
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOOKINGS -->
+
+    <section class="admin-panel">
+
+        <div class="admin-panel-heading">
+
+            <div>
+
+                <span>
+                    BOOKINGS
+                </span>
+
+                <h2>
+                    Recent Bookings
+                </h2>
+
+            </div>
+
+            <div class="panel-indicator">
+                LIVE
+            </div>
+
+        </div>
+
+
+        <div class="admin-table-wrap">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Time Slot
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="bookingTableBody">
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="table-loading"
+                        >
+                            Loading bookings...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="admin-footer">
+
+        <span>
+            TurfNova
+        </span>
+
+        <p>
+            Admin Control • 2026
+        </p>
+
+    </footer>
+
+
+</main>
+
+
+<script
+    type="module"
+    src="admin.js"
+></script>
+
+</body>
+
+</html>
